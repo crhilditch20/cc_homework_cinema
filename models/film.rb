@@ -19,6 +19,11 @@ def save()
   @id = id_finder[0]['id'].to_i
 end
 
+def update()
+  sql = "UPDATE films SET (title, price) = ('#{@title}', #{@price}) WHERE id = #{@id};"
+  SqlRunner.run(sql)
+end
+
 def self.all()
   sql = "SELECT * FROM films;"
   films = SqlRunner.run(sql)

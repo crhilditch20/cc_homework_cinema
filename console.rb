@@ -28,6 +28,9 @@ customer2.save()
 customer3.save()
 customer4.save()
 
+customer4.funds = 50
+customer4.update()
+
 film1 = Film.new({
   'title' => 'Batman Begins',
   'price' => 7
@@ -39,6 +42,9 @@ film2 = Film.new({
 
 film1.save()
 film2.save()
+
+film2.title = 'Finding Dory'
+film2.update()
 
 Film.all
 Customer.all

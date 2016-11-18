@@ -19,6 +19,11 @@ class Customer
     @id = id_finder[0]['id'].to_i
   end
 
+  def update()
+    sql = "UPDATE customers SET (name, funds) = ('#{@name}', #{@funds}) WHERE id = #{@id};"
+    SqlRunner.run(sql)
+  end
+
   def self.all()
     sql = "SELECT * FROM customers;"
     customers = SqlRunner.run(sql)
