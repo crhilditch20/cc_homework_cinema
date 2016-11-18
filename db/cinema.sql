@@ -5,7 +5,8 @@ DROP TABLE IF EXISTS films;
 CREATE TABLE films (
   id SERIAL8 primary key,
   title VARCHAR(255),
-  price INT2
+  price INT2,
+  available_tickets INT8
 );
 
 CREATE TABLE customers (

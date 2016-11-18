@@ -24,6 +24,10 @@ class Customer
     SqlRunner.run(sql)
   end
 
+  def tickets()
+
+  end
+
   def self.all()
     sql = "SELECT * FROM customers;"
     customers = SqlRunner.run(sql)

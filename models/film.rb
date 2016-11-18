@@ -4,24 +4,29 @@ require('pry-byebug')
 
 class Film
 
-attr_accessor :title, :price
+attr_accessor :title, :price, :available_tickets
 attr_reader :id
 
 def initialize(options)
   @title = options['title']
   @price = options['price'].to_i
   @id = options['id'].to_i
+  @available_tickets = options['available_tickets'].to_i
 end
 
 def save()
-  sql = "INSERT INTO films (title, price) VALUES ('#{@title}', #{@price}) RETURNING *;"
-  id_finder = SqlRunner.run(sql)
-  @id = id_finder[0]['id'].to_i
+  sql = "INSERT INTO films (title, price, available_tickets) VALUES ('#{@title}', #{@price}, #{@available_tickets}) RETURNING *;"
+  film = SqlRunner.run(sql)
+  @id = film[0]['id'].to_i
 end
 
 def update()
-  sql = "UPDATE films SET (title, price) = ('#{@title}', #{@price}) WHERE id = #{@id};"
+  sql = "UPDATE films SET (title, price, available_tickets) = ('#{@title}', #{@price}, #{@available_tickets}) WHERE id = #{@id};"
   SqlRunner.run(sql)
+end
+
+def customers()
+
 end
 
 def self.all()
