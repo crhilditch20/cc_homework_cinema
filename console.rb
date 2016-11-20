@@ -49,14 +49,19 @@ film2.save()
 film2.title = 'Finding Dory'
 film2.update()
 
-# ticket1 = Ticket.new({
-#   'customer_id' => customer1.id,
-#   'film_id' => film2.id
-#   })
-# ticket1.save()
-# ticket1.customer()
-# ticket1.film()
+film1.price = 8
+film1.update()
 
+ticket1 = Ticket.new({
+  'customer_id' => customer1.id,
+  'film_id' => film2.id
+  })
+ticket1.save()
+binding.pry
+ticket1.customer()
+ticket1.film()
+
+ticket2 = Ticket.sell_ticket(customer1, film2)
 
 
 Film.all

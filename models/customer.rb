@@ -4,8 +4,7 @@ require('pry-byebug')
 
 class Customer
 
-  attr_accessor :name, :funds
-  attr_reader :id
+  attr_accessor :name, :funds, :id
 
   def initialize(options)
     @name = options['name']
@@ -15,8 +14,8 @@ class Customer
 
   def save()
     sql = "INSERT INTO customers (name, funds) VALUES ('#{@name}', #{@funds}) RETURNING *;"
-    id_finder = SqlRunner.run(sql)
-    @id = id_finder[0]['id'].to_i
+    customer = SqlRunner.run(sql)
+    @id = customer[0]['id'].to_i
   end
 
   def update()
@@ -24,9 +23,6 @@ class Customer
     SqlRunner.run(sql)
   end
 
-  def tickets()
-
-  end
 
   def self.all()
     sql = "SELECT * FROM customers;"

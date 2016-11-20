@@ -4,8 +4,7 @@ require('pry-byebug')
 
 class Film
 
-attr_accessor :title, :price, :available_tickets
-attr_reader :id
+attr_accessor :title, :price, :available_tickets, :id
 
 def initialize(options)
   @title = options['title']
@@ -23,10 +22,6 @@ end
 def update()
   sql = "UPDATE films SET (title, price, available_tickets) = ('#{@title}', #{@price}, #{@available_tickets}) WHERE id = #{@id};"
   SqlRunner.run(sql)
-end
-
-def customers()
-
 end
 
 def self.all()
