@@ -63,6 +63,8 @@ ticket1.film()
 
 ticket2 = Ticket.sell_ticket(customer1, film2)
 
+film2.customers()
+customer1.films()
 
 Film.all
 Customer.all

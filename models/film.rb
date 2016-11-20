@@ -1,5 +1,6 @@
 require('pg')
 require_relative('../db/sql_runner.rb')
+require_relative('customer.rb')
 require('pry-byebug')
 
 class Film
@@ -22,6 +23,16 @@ end
 def update()
   sql = "UPDATE films SET (title, price, available_tickets) = ('#{@title}', #{@price}, #{@available_tickets}) WHERE id = #{@id};"
   SqlRunner.run(sql)
+end
+
+def customers()
+  sql = "SELECT c.* 
+  FROM customers c
+  INNER JOIN tickets t
+  ON t.customer_id = c.id
+  INNER JOIN films f
+  ON f.id = t.film_id;"
+  Customer.get_many(sql)
 end
 
 def self.all()
