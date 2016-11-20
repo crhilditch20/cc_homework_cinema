@@ -38,6 +38,8 @@ class Ticket
       'film_id' => film.id
       })
     ticket.save()
+    film.available_tickets -= 1
+    film.update()
   end
 
   def self.all()

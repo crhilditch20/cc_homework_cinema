@@ -49,7 +49,7 @@ film2.save()
 film2.title = 'Finding Dory'
 film2.update()
 
-film1.price = 8
+film1.price -= 1
 film1.update()
 
 ticket1 = Ticket.new({
@@ -57,7 +57,6 @@ ticket1 = Ticket.new({
   'film_id' => film2.id
   })
 ticket1.save()
-binding.pry
 ticket1.customer()
 ticket1.film()
 

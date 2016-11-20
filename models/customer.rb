@@ -25,7 +25,7 @@ class Customer
   end
 
   def films()
-    sql = "SELECT f.title FROM films f
+    sql = "SELECT f.* FROM films f
       INNER JOIN tickets t
       on t.film_id = f.id
       INNER JOIN customers c
