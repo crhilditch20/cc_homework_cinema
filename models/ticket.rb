@@ -40,6 +40,8 @@ class Ticket
     ticket.save()
     film.available_tickets -= 1
     film.update()
+    customer.funds -= film.price
+    customer.update()
   end
 
   def self.all()
